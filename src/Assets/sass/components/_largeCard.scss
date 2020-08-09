@@ -1,0 +1,49 @@
+.large-card {
+  @include e(container) {
+    padding: 12px 16px;
+  }
+
+  @include e(row) {
+    padding: 16px 0;
+  }
+
+  @include e(heading) {
+    font-size: 32px;
+    color: $text-color;
+    padding: 12px 0px 8px 0px;
+  }
+
+  @include e(sub-heading) {
+    font-size: 16px;
+  }
+
+  @include e(button) {
+    padding: 0px 24px;
+  }
+
+  @include e(note) {
+    flex-grow: 1;
+  }
+}
+
+.large-card__description {
+  .description {
+    @include e(heading) {
+      font-size: 22px;
+    }
+  }
+}
+
+.large-card__note {
+  .note {
+    @include e(heading) {
+      font-size: 16px;
+      padding-bottom: 12px;
+    }
+
+    @include e(item) {
+      width: 100%;
+      padding: 8px;
+    }
+  }
+}

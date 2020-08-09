@@ -1,0 +1,13 @@
+.stack {
+  @include e(group) {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+  }
+
+  @include e(item) {
+    flex-grow: 1;
+    min-width: 23%;
+    padding: 12px;
+  }
+}

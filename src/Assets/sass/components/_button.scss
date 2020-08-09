@@ -1,0 +1,19 @@
+.button {
+  padding: 0 16px;
+  @include e(with-icon) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(icon) {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+
+    @include m(right) {
+      padding-right: 16px;
+    }
+  }
+
+  @include e(text);
+}

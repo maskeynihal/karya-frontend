@@ -1,0 +1,8 @@
+.note-input {
+  margin: 0;
+
+  // immediate child should have take width as same as its parent
+  div {
+    flex-grow: 1;
+  }
+}

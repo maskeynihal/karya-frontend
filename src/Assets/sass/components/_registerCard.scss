@@ -1,0 +1,36 @@
+.register-card {
+  margin: 10% 20%;
+
+  @include e(heading) {
+    font-size: 24px;
+    text-align: center;
+    padding: 8px 0 24px 0;
+  }
+
+  @include e(button) {
+    background-color: getColor("success.base");
+    color: $white;
+  }
+
+  @include e(footer) {
+    padding: 16px;
+    text-align: center;
+  }
+}
+
+.input-row {
+  text-align: center;
+}
+
+.input-field {
+  :first-child {
+    width: 20%;
+  }
+  :last-child {
+    width: 80%;
+
+    input {
+      width: 100%;
+    }
+  }
+}

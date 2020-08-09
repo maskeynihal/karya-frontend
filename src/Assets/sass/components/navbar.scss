@@ -1,0 +1,17 @@
+.navbar {
+  padding: 24px 0;
+  position: relative;
+  @include e(container) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.navbar-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 20px;
+  // background-color: getColor("primary.dark");
+}

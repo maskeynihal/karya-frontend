@@ -1,7 +1,12 @@
 {
   "workbench.colorCustomizations": {
+    "symbolIcon.classForeground": "#443c3c",
     "activityBar.background": "#252A51",
     "titleBar.activeBackground": "#343B72",
-    "titleBar.activeForeground": "#FBFBFD"
+    "titleBar.activeForeground": "#FBFBFD",
+    "[Just Black]": {
+      "symbolIcon.textForeground": "#000",
+      "textBlockQuote.background": "#412626"
+    }
   }
 }

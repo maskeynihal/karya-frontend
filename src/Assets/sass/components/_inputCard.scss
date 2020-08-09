@@ -1,0 +1,40 @@
+.input-card {
+  @include e(container) {
+    padding: 12px 16px;
+  }
+
+  @include e(topbar) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include e(heading) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+
+    & :first-child {
+      width: 20%;
+    }
+    & :last-child {
+      width: 80%;
+    }
+    input {
+      width: 70% !important;
+    }
+  }
+
+  @include e(description) {
+    flex-grow: 1;
+    .description {
+      @include e(heading);
+      @include e(body) {
+        margin: 0;
+        padding: 12px 0;
+        div {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}

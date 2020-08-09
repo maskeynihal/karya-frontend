@@ -1,0 +1,46 @@
+.main-container {
+  padding: 0px 24px;
+}
+
+.container {
+  padding: 16px 12px;
+}
+
+.row-group {
+  display: flex;
+  align-items: center;
+}
+
+.bg-primary {
+  background-color: getColor("primary.base");
+}
+
+.bg-secondary {
+  background-color: getColor("secondary.base");
+  color: getColor("white.base");
+}
+
+.bg-success {
+  background-color: getColor("success.base");
+  color: getColor("white.base");
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.card {
+  padding: 12px 16px;
+}
+
+.alert {
+  margin: 8px 0 16px 0;
+}
+
+.error {
+  color: $error-color;
+}
+
+.btn {
+  border: none;
+}

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
  * @param {Object} props
  */
 function AuthRoute({ Component, type, ...props }) {
-  const { isAuthenticated } = useSelector((state) => state.apiReducer);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   if (!isAuthenticated) {
     if (type === 'guest') {

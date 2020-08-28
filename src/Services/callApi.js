@@ -1,7 +1,6 @@
 import http from 'Utils/http';
 
 export default async ({ url, method }, params) => {
-  console.log(url);
   try {
     const { data } = await http({
       url: url,
@@ -15,7 +14,7 @@ export default async ({ url, method }, params) => {
     };
   } catch (error) {
     if (!error.response) {
-      return {
+      throw {
         response: {
           message: 'Network Error'
         },
@@ -23,8 +22,8 @@ export default async ({ url, method }, params) => {
       };
     }
 
-    return {
-      response: error.response.data,
+    throw {
+      response: { data: error.response.data, message: 'Error' },
       error: true
     };
   }

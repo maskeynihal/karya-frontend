@@ -1,4 +1,4 @@
-import Navbar from './navbar';
+import TopNavbar from './navbar';
 import NavbarDropdown from './navbarDropdown';
 
-export { Navbar, NavbarDropdown };
+export { TopNavbar, NavbarDropdown };

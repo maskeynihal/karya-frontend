@@ -34,7 +34,7 @@ const isRequired = (value, isRequired) => {
  */
 const getPropValues = (initialValue, prop) => {
   return Object.keys(initialValue).reduce((accumulator, curr) => {
-    accumulator[curr] = !prop ? false : initialValue[curr][prop] || null;
+    accumulator[curr] = !prop ? false : initialValue[curr][prop] || '';
 
     return accumulator;
   }, {});
@@ -126,9 +126,7 @@ const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
 
   // Event handler for handling changes in input.
   const handleOnChange = useCallback(
-    (e) => {
-      const { event } = e;
-
+    (event) => {
       setIsDirty(true);
       const name = event.target.name;
       const value = event.target.value;

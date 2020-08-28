@@ -73,7 +73,17 @@ function ProjectShow(props) {
           </div>
         </div>
         <div className="card">
-          <div className="card-header">Tasks</div>
+          <div className="card-header">
+            <div className="row">
+              <div className="col">Tasks</div>
+              <div className="col">
+                <Link to={`/projects/${project.id}/tasks/create`} className="btn btn-primary">
+                  {' '}
+                  CREATE TASK{' '}
+                </Link>
+              </div>
+            </div>
+          </div>
           <div className="card-body">
             <table className="table table-bordered table-striped">
               <tbody>
@@ -102,10 +112,10 @@ function ProjectShow(props) {
                         </ul>
                       </td>
                       <td>
-                        <Link to={`/tasks/edit/${task.id}`} className="btn btn-warning">
+                        <Link to={`/projects/${project.id}/tasks/edit/${task.id}`} className="btn btn-warning">
                           Edit
                         </Link>
-                        <Link to={`/tasks/show/${task.id}`} className="btn btn-primary">
+                        <Link to={`/projects/${project.id}/tasks/show/${task.id}`} className="btn btn-primary">
                           Show
                         </Link>
                       </td>

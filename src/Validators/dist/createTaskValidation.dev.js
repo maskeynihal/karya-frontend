@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _default = {
-  projectManager: {
+  title: {
     required: true
   },
   description: {
     required: true
   },
-  name: {
+  deadline: {
     required: true
   }
 };

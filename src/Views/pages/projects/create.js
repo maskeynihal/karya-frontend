@@ -32,7 +32,7 @@ function ProjectsCreate(props) {
         method: 'POST'
       },
       {
-        id: PROJECT_MANAGER_ROLE_ID
+        id: [PROJECT_MANAGER_ROLE_ID]
       }
     ).then((data) => {
       setProjectManagers(data.response.data);

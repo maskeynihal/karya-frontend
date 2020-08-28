@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
  */
 function TopNavbar() {
   const [isShowing, setIsShowing] = useState(false);
-  const { isAuthenticated } = useSelector((state) => state.apiReducer);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
     <React.Fragment>
@@ -27,7 +27,6 @@ function TopNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

@@ -5,7 +5,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.projectsActions = exports.usersActions = exports.todosActions = exports.apiActions = exports.authActions = exports.redirectActions = exports.modalActions = void 0;
+exports.tasksActions = exports.projectsActions = exports.usersActions = exports.todosActions = exports.apiActions = exports.authActions = exports.redirectActions = exports.modalActions = void 0;
 
 var modalActions = _interopRequireWildcard(require("./modalAction"));
 
@@ -34,6 +34,10 @@ exports.usersActions = usersActions;
 var projectsActions = _interopRequireWildcard(require("./projectsActions"));
 
 exports.projectsActions = projectsActions;
+
+var tasksActions = _interopRequireWildcard(require("./tasksActions"));
+
+exports.tasksActions = tasksActions;
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

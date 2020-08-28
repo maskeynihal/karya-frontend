@@ -7,14 +7,16 @@ import authReducers from './authReducer';
 import errorReducers from './errorReducer';
 import usersReducers from './usersReducers';
 import projectsReducers from './projectsReducers';
+import tasksReducers from './tasksReducers';
 
 export default combineReducers({
   modal: modalReducers,
   redirect: redirectReducer,
-  apiReducer: apiReducers,
-  todos: todosReducers,
+  // apiReducer: apiReducers,
+  // todos: todosReducers,
   auth: authReducers,
   errors: errorReducers,
   users: usersReducers,
-  projects: projectsReducers
+  projects: projectsReducers,
+  tasks: tasksReducers
 });

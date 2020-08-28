@@ -18,6 +18,8 @@ export default (state = INITIAL_STATE, action) => {
     case projectsActions.CREATE_PROJECT_SUCCESS:
       return { ...state, redirect: true, isLoading: false, projects: [...state.projects, payload.response.data] };
     case projectsActions.SHOW_PROJECT_SUCCESS:
+      console.log('RESPONSE', payload.response.data);
+
       return { ...state, currentProject: payload.response.data };
     case projectsActions.GET_PROJECTS_FAILURE:
       return { ...state, isLoading: false, projects: [], error: payload.error };

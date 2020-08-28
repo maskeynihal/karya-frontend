@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CREATE_PROJECT_URL = exports.GET_ALL_PROJECTS_URL = exports.CREATE_USER_URL = exports.GET_ALL_USERS_URL = exports.GET_TODOS_URL = exports.ADD_TODO_URL = exports.LOGIN_URL = exports.REGISTER_URL = void 0;
+exports.CREATE_TASK_URL = exports.GET_ALL_TASKS_URL = exports.CREATE_PROJECT_URL = exports.GET_ALL_PROJECTS_URL = exports.CREATE_USER_URL = exports.GET_ALL_USERS_URL = exports.GET_TODOS_URL = exports.ADD_TODO_URL = exports.LOGIN_URL = exports.REGISTER_URL = void 0;
 var REGISTER_URL = 'auth/register/';
 exports.REGISTER_URL = REGISTER_URL;
 var LOGIN_URL = {
@@ -41,3 +41,13 @@ var CREATE_PROJECT_URL = {
   method: 'POST'
 };
 exports.CREATE_PROJECT_URL = CREATE_PROJECT_URL;
+var GET_ALL_TASKS_URL = {
+  url: '/tasks',
+  method: 'GET'
+};
+exports.GET_ALL_TASKS_URL = GET_ALL_TASKS_URL;
+var CREATE_TASK_URL = {
+  url: '/tasks',
+  method: 'POST'
+};
+exports.CREATE_TASK_URL = CREATE_TASK_URL;

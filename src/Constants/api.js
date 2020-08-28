@@ -31,3 +31,13 @@ export const CREATE_PROJECT_URL = {
   url: '/projects',
   method: 'POST'
 };
+
+export const GET_ALL_TASKS_URL = {
+  url: '/tasks',
+  method: 'GET'
+};
+
+export const CREATE_TASK_URL = {
+  url: '/tasks',
+  method: 'POST'
+};

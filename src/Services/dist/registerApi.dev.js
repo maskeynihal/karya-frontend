@@ -5,30 +5,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _reactRedux = require("react-redux");
-
 var _http = _interopRequireDefault(require("Utils/http"));
+
+var _api = require("Constants/api");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _callee = function _callee(_ref, params) {
-  var url, method, _ref2, data;
+var _callee = function _callee(_ref) {
+  var name, email, password, _ref2, data;
 
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          url = _ref.url, method = _ref.method;
+          name = _ref.name, email = _ref.email, password = _ref.password;
           _context.prev = 1;
           _context.next = 4;
-          return regeneratorRuntime.awrap((0, _http["default"])({
-            url: url,
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: localStorage.getItem('karyaToken') || null
-            },
-            method: method,
-            data: params
+          return regeneratorRuntime.awrap(_http["default"].post(_api.REGISTER_URL, {
+            name: name,
+            email: email,
+            password: password
           }));
 
         case 4:
@@ -48,21 +44,18 @@ var _callee = function _callee(_ref, params) {
             break;
           }
 
-          throw {
+          return _context.abrupt("return", {
             response: {
               message: 'Network Error'
             },
             error: true
-          };
+          });
 
         case 13:
-          throw {
-            response: {
-              data: _context.t0.response.data,
-              message: 'Error'
-            },
+          return _context.abrupt("return", {
+            response: _context.t0.response.data,
             error: true
-          };
+          });
 
         case 14:
         case "end":

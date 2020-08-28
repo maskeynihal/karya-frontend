@@ -1,11 +1,11 @@
 export default {
-  projectManager: {
+  title: {
     required: true
   },
   description: {
     required: true
   },
-  name: {
+  deadline: {
     required: true
   }
 };

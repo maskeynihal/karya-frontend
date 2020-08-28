@@ -1,9 +1,15 @@
+import { useSelector } from 'react-redux';
+
 import http from 'Utils/http';
 
 export default async ({ url, method }, params) => {
   try {
     const { data } = await http({
       url: url,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('karyaToken') || null
+      },
       method: method,
       data: params
     });

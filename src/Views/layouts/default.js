@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { authActions } from 'Redux/actions';
 import { TopNavbar } from 'Components/container/navbar';
-
+import { ADMIN_ROLE_ID } from 'Constants/roles';
 /**
  * Default Layout.
  *
@@ -16,6 +16,7 @@ import { TopNavbar } from 'Components/container/navbar';
 function DefaultLayout(props) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <div>
@@ -27,14 +28,16 @@ function DefaultLayout(props) {
       <div className="row mt-2">
         <div className="col-3">
           <ul className="list-group">
-            <Link className="list-group-item" to={'/users'}>
-              Users
-            </Link>
+            {user.role === ADMIN_ROLE_ID && (
+              <Link className="list-group-item" to={'/users'}>
+                Users
+              </Link>
+            )}
             <Link className="list-group-item" to={'/projects'}>
-              Projects
+              My Projects
             </Link>
             <Link className="list-group-item" to={'/tasks'}>
-              Task
+              My Task
             </Link>
             <button
               className="btn btn-warning"

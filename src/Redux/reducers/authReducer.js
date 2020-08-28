@@ -1,9 +1,11 @@
-import { SET_CURRENT_USER, USER_LOADING } from 'Redux/actions/types';
+import { SET_CURRENT_USER, USER_LOADING, SET_AUTH_INITIAL } from 'Redux/actions/types';
+import jwtDecode from 'jwt-decode';
 
+const authToken = localStorage.getItem('karyaToken');
 const INITIAL_STATE = {
-  isAuthenticated: !!localStorage.getItem('karyaToken'),
-  authToken: localStorage.getItem('karyaToken') || '',
-  user: {},
+  isAuthenticated: !!authToken,
+  authToken: authToken || '',
+  user: authToken ? jwtDecode(authToken) : {},
   isLoading: false,
   hasError: false,
   errors: {}
@@ -12,11 +14,14 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   const { type, payload = {} } = action;
 
+  console.log(payload);
   switch (type) {
     case SET_CURRENT_USER:
-      return { ...state, isAuthenticated: !!Object.keys(payload).length, user: payload };
+      return { ...state, isAuthenticated: !!payload.token, user: payload.user, authToken: payload.token };
     case USER_LOADING:
       return { ...state, isLoading: true };
+    case SET_AUTH_INITIAL:
+      return { ...INITIAL_STATE, authToken: '' };
     default:
       return state;
   }

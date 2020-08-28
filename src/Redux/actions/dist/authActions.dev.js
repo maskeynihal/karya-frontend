@@ -1,102 +1,114 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.logoutUser = exports.setUserLoading = exports.setCurrentUser = exports.loginUser = void 0;
 
-const _axios = _interopRequireDefault(require('axios'));
+var _axios = _interopRequireDefault(require("axios"));
 
-const _jwtDecode = _interopRequireDefault(require('jwt-decode'));
+var _jwtDecode = _interopRequireDefault(require("jwt-decode"));
 
-const _types = require('./types');
+var _types = require("./types");
 
-const _callApi = _interopRequireDefault(require('Services/callApi'));
+var _callApi = _interopRequireDefault(require("Services/callApi"));
 
-const _api = require('Constants/api');
+var _api = require("Constants/api");
 
-const _actions = require('Redux/actions');
+var _actions = require("Redux/actions");
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // import setAuthToken from '../utils/setAuthToken';
 // Register User
-const loginUser = function loginUser(userData) {
+var loginUser = function loginUser(userData) {
   return function _callee(dispatch) {
-    let _ref, response, error, decoded;
+    var _ref, response, error, user;
 
-    return regeneratorRuntime.async(
-      function _callee$(_context) {
-        while (1) {
-          switch ((_context.prev = _context.next)) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
+    return regeneratorRuntime.async(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return regeneratorRuntime.awrap((0, _callApi["default"])(_api.LOGIN_URL, userData));
 
-              return regeneratorRuntime.awrap((0, _callApi['default'])(_api.LOGIN_URL, userData));
+          case 3:
+            _ref = _context.sent;
+            response = _ref.response;
+            error = _ref.error;
+            console.log(response.data.token);
+            localStorage.setItem('karyaToken', response.data.token);
+            _context.next = 10;
+            return regeneratorRuntime.awrap((0, _jwtDecode["default"])(response.data.token));
 
-            case 3:
-              _ref = _context.sent;
-              response = _ref.response;
-              error = _ref.error;
-              localStorage.setItem('karyaToken', response.data.token);
-              decoded = (0, _jwtDecode['default'])(response.data.token); // Set current user
+          case 10:
+            user = _context.sent;
+            // Set current user
+            dispatch(setCurrentUser({
+              user: user,
+              token: response.data.token
+            }));
+            _context.next = 17;
+            break;
 
-              dispatch(setCurrentUser(decoded));
-              _context.next = 14;
-              break;
+          case 14:
+            _context.prev = 14;
+            _context.t0 = _context["catch"](0);
+            dispatch({
+              type: _types.GET_ERRORS,
+              payload: _context.t0.response || {}
+            });
 
-            case 11:
-              _context.prev = 11;
-              _context.t0 = _context['catch'](0);
-              dispatch({
-                type: _types.GET_ERRORS,
-                payload: _context.t0.response || {}
-              });
-
-            case 14:
-            case 'end':
-              return _context.stop();
-          }
+          case 17:
+          case "end":
+            return _context.stop();
         }
-      },
-      null,
-      null,
-      [[0, 11]]
-    );
+      }
+    }, null, null, [[0, 14]]);
   };
 }; // Set logged in user
 
+
 exports.loginUser = loginUser;
 
-var setCurrentUser = function setCurrentUser(decoded) {
+var setCurrentUser = function setCurrentUser(user) {
   return {
     type: _types.SET_CURRENT_USER,
-    payload: decoded
+    payload: user
   };
 }; // User loading
 
+
 exports.setCurrentUser = setCurrentUser;
 
-const setUserLoading = function setUserLoading() {
+var setUserLoading = function setUserLoading() {
   return {
     type: _types.USER_LOADING
   };
-}; // Log user out
+};
 
 exports.setUserLoading = setUserLoading;
 
-const logoutUser = function logoutUser() {
+var setAuthInitial = function setAuthInitial() {
+  return {
+    type: _types.SET_AUTH_INITIAL
+  };
+}; // Log user out
+
+
+var logoutUser = function logoutUser() {
   return function (dispatch) {
     // Remove token from local storage
     localStorage.removeItem('karyaToken'); // Remove auth header for future requests
-    // setAuthToken(false);
 
-    dispatch(_actions.usersActions.setUserInitialState()); // Set current user to empty object {} which will set isAuthenticated to false
+    dispatch(_actions.usersActions.setUserInitialState());
+    dispatch(setAuthInitial()); // Set current user to empty object {} which will set isAuthenticated to false
 
-    dispatch(setCurrentUser({}));
+    dispatch(setCurrentUser({
+      user: {},
+      token: ''
+    }));
   };
 };
 

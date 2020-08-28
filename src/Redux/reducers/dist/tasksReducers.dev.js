@@ -24,8 +24,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var INITIAL_STATE = {
   isLoading: false,
   redirect: false,
-  projects: [],
-  currentProject: {}
+  tasks: [],
+  currentTask: {}
 };
 
 var _default = function _default() {
@@ -35,49 +35,53 @@ var _default = function _default() {
       payload = action.payload;
 
   switch (type) {
-    case _actions.projectsActions.GET_PROJECTS_STARTED:
+    case _actions.tasksActions.GET_TASKS_STARTED:
       return _objectSpread({}, state, {
         isLoading: true
       });
 
-    case _actions.projectsActions.GET_PROJECTS_SUCCESS:
+    case _actions.tasksActions.GET_TASKS_SUCCESS:
       return _objectSpread({}, state, {
         redirect: false,
         isLoading: false,
-        projects: _toConsumableArray(payload.response.data)
+        tasks: _toConsumableArray(payload.response.data)
       });
 
-    case _actions.projectsActions.CREATE_PROJECT_SUCCESS:
+    case _actions.tasksActions.CREATE_TASK_SUCCESS:
       return _objectSpread({}, state, {
         redirect: true,
         isLoading: false,
-        projects: [].concat(_toConsumableArray(state.projects), [payload.response.data])
+        tasks: [].concat(_toConsumableArray(state.tasks), [payload.response.data])
       });
 
-    case _actions.projectsActions.SHOW_PROJECT_SUCCESS:
-      console.log('RESPONSE', payload.response.data);
+    case _actions.tasksActions.SHOW_TASK_SUCCESS:
       return _objectSpread({}, state, {
-        currentProject: payload.response.data
+        currentTask: payload.response.data
       });
 
-    case _actions.projectsActions.GET_PROJECTS_FAILURE:
+    case _actions.tasksActions.GET_TASKS_FAILURE:
       return _objectSpread({}, state, {
         isLoading: false,
-        projects: [],
+        tasks: [],
         error: payload.error
       });
 
-    case _actions.projectsActions.EDIT_PROJECT_SUCCESS:
+    case _actions.tasksActions.EDIT_TASK_SUCCESS:
       return _objectSpread({}, state, {
         isLoading: false,
         redirect: true,
-        projects: state.projects.map(function (user) {
+        tasks: state.tasks.map(function (user) {
           if (user.id === payload.response.data.id) {
             user = payload.response.data;
           }
 
           return user;
         })
+      });
+
+    case _actions.tasksActions.REDIRECT_TOGGLE:
+      return _objectSpread({}, state, {
+        redirect: payload
       });
 
     default:

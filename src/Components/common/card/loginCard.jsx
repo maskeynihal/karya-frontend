@@ -24,7 +24,7 @@ const INITIAL_VALUE = {
  * @param validation
  */
 function LoginCard(initialValue = INITIAL_VALUE, validation = loginFormValidation) {
-  const { isAuthenticated, hasError, errors: apiErrors } = useSelector((state) => state.apiReducer);
+  const { isAuthenticated, hasError, errors: apiErrors } = useSelector((state) => state.auth);
 
   const { alert, handleAlert } = useAlert({});
   const dispatch = useDispatch();

@@ -20,7 +20,6 @@ export const loginUser = (userData) => async (dispatch) => {
     console.log(LOGIN_URL);
     const { response, error } = await callApi(LOGIN_URL, userData);
 
-    console.log('RESPONSE', response);
     localStorage.setItem('karyaToken', response.data.token);
     const decoded = jwtDecode(response.data.token);
 

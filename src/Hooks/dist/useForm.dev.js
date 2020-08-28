@@ -69,6 +69,8 @@ var getPropValues = function getPropValues(initialValue, prop) {
  * @param {object} initialValue Model you initialValue.
  * @param {object} validation Model your validation.
  * @param {Function} submitFormCallback
+ * @param isDisableInitialValue
+ * @param isDirtyInitialValue
  */
 
 
@@ -76,6 +78,8 @@ var useForm = function useForm() {
   var initialValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var validation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var submitFormCallback = arguments.length > 2 ? arguments[2] : undefined;
+  var isDisableInitialValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  var isDirtyInitialValue = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 
   var _useState = (0, _react.useState)(initialValue),
       _useState2 = _slicedToArray(_useState, 2),
@@ -97,12 +101,12 @@ var useForm = function useForm() {
       dirty = _useState8[0],
       setDirty = _useState8[1];
 
-  var _useState9 = (0, _react.useState)(true),
+  var _useState9 = (0, _react.useState)(isDisableInitialValue),
       _useState10 = _slicedToArray(_useState9, 2),
       disable = _useState10[0],
       setDisable = _useState10[1];
 
-  var _useState11 = (0, _react.useState)(false),
+  var _useState11 = (0, _react.useState)(isDirtyInitialValue),
       _useState12 = _slicedToArray(_useState11, 2),
       isDirty = _useState12[0],
       setIsDirty = _useState12[1]; // Get a local copy of initialValue
@@ -110,7 +114,7 @@ var useForm = function useForm() {
 
   (0, _react.useEffect)(function () {
     setStateValue(initialValue);
-    setDisable(true); // Disable button in initial render.
+    setDisable(isDisableInitialValue); // Disable button in initial render.
 
     setInitialErrorState();
   }, []); // eslint-disable-line
@@ -151,11 +155,13 @@ var useForm = function useForm() {
   // When hooks was first rendered...
 
   var setInitialErrorState = (0, _react.useCallback)(function () {
-    Object.keys(errors).map(function (name) {
-      return setErrors(function (prevState) {
-        return _objectSpread({}, prevState, _defineProperty({}, name, validateFormFields(name, values[name])));
+    if (!isDirtyInitialValue) {
+      Object.keys(errors).map(function (name) {
+        return setErrors(function (prevState) {
+          return _objectSpread({}, prevState, _defineProperty({}, name, validateFormFields(name, values[name])));
+        });
       });
-    });
+    }
   }, [errors, values, validateFormFields]); // Used to disable submit button if there's a value in errors
   // or the required field in state has no value.
   // Wrapped in useCallback to cached the const to =  avoid intensive memory leaked
@@ -183,7 +189,8 @@ var useForm = function useForm() {
     });
   }, [validateFormFields]);
   var handleOnSubmit = (0, _react.useCallback)(function (event) {
-    event.preventDefault(); // Making sure that there's no error in the state
+    event.preventDefault();
+    console.log(validateErrorState()); // Making sure that there's no error in the state
     // before calling the submit callback const
 
     if (!validateErrorState()) {
@@ -203,6 +210,10 @@ var useForm = function useForm() {
     console.log(values, getPropValues(initialValue, VALUE));
   };
 
+  var setInitialFormValue = function setInitialFormValue(values) {
+    setValues(values);
+  };
+
   return {
     handleOnChange: handleOnChange,
     handleOnSubmit: handleOnSubmit,
@@ -212,6 +223,7 @@ var useForm = function useForm() {
     setValues: setValues,
     setErrors: setErrors,
     dirty: dirty,
+    setInitialFormValue: setInitialFormValue,
     setInitialValues: setInitialValues
   };
 };

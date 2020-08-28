@@ -53,28 +53,27 @@ var loginUser = function loginUser(userData) {
             _ref = _context.sent;
             response = _ref.response;
             error = _ref.error;
-            console.log('RESPONSE', response);
             localStorage.setItem('karyaToken', response.data.token);
             decoded = (0, _jwtDecode["default"])(response.data.token); // Set current user
 
             dispatch(setCurrentUser(decoded));
-            _context.next = 16;
+            _context.next = 15;
             break;
 
-          case 13:
-            _context.prev = 13;
+          case 12:
+            _context.prev = 12;
             _context.t0 = _context["catch"](0);
             dispatch({
               type: _types.GET_ERRORS,
               payload: _context.t0.response || {}
             });
 
-          case 16:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, null, null, [[0, 13]]);
+    }, null, null, [[0, 12]]);
   };
 }; // Set logged in user
 

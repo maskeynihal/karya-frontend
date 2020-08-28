@@ -46,8 +46,16 @@ const getPropValues = (initialValue, prop) => {
  * @param {object} initialValue Model you initialValue.
  * @param {object} validation Model your validation.
  * @param {Function} submitFormCallback
+ * @param isDisableInitialValue
+ * @param isDirtyInitialValue
  */
-const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
+const useForm = (
+  initialValue = {},
+  validation = {},
+  submitFormCallback,
+  isDisableInitialValue = true,
+  isDirtyInitialValue = false
+) => {
   const [state, setStateValue] = useState(initialValue);
 
   const [values, setValues] = useState(getPropValues(state, VALUE));
@@ -56,13 +64,13 @@ const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
 
   const [dirty, setDirty] = useState(getPropValues(state));
 
-  const [disable, setDisable] = useState(true);
-  const [isDirty, setIsDirty] = useState(false);
+  const [disable, setDisable] = useState(isDisableInitialValue);
+  const [isDirty, setIsDirty] = useState(isDirtyInitialValue);
 
   // Get a local copy of initialValue
   useEffect(() => {
     setStateValue(initialValue);
-    setDisable(true); // Disable button in initial render.
+    setDisable(isDisableInitialValue); // Disable button in initial render.
     setInitialErrorState();
   }, []); // eslint-disable-line
 
@@ -110,12 +118,14 @@ const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
   // Set Initial Error State
   // When hooks was first rendered...
   const setInitialErrorState = useCallback(() => {
-    Object.keys(errors).map((name) =>
-      setErrors((prevState) => ({
-        ...prevState,
-        [name]: validateFormFields(name, values[name])
-      }))
-    );
+    if (!isDirtyInitialValue) {
+      Object.keys(errors).map((name) =>
+        setErrors((prevState) => ({
+          ...prevState,
+          [name]: validateFormFields(name, values[name])
+        }))
+      );
+    }
   }, [errors, values, validateFormFields]);
 
   // Used to disable submit button if there's a value in errors
@@ -143,7 +153,7 @@ const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
   const handleOnSubmit = useCallback(
     (event) => {
       event.preventDefault();
-
+      console.log(validateErrorState());
       // Making sure that there's no error in the state
       // before calling the submit callback const
       if (!validateErrorState()) {
@@ -163,6 +173,10 @@ const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
     console.log(values, getPropValues(initialValue, VALUE));
   };
 
+  const setInitialFormValue = (values) => {
+    setValues(values);
+  };
+
   return {
     handleOnChange,
     handleOnSubmit,
@@ -172,6 +186,7 @@ const useForm = (initialValue = {}, validation = {}, submitFormCallback) => {
     setValues,
     setErrors,
     dirty,
+    setInitialFormValue,
     setInitialValues
   };
 };

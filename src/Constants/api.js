@@ -11,3 +11,13 @@ export const GET_TODOS_URL = {
   url: '/todo',
   method: 'GET'
 };
+
+export const GET_ALL_USERS_URL = {
+  url: '/users',
+  method: 'GET'
+};
+
+export const CREATE_USER_URL = {
+  url: '/users',
+  method: 'POST'
+};

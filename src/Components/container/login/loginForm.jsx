@@ -21,7 +21,6 @@ const INITIAL_VALUE = {
  * @param validation
  */
 function Login(props) {
-  console.log(props);
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state.auth);
   const { errors: reduxError } = useSelector((state) => state.errors);

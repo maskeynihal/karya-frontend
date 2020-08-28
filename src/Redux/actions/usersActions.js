@@ -1,8 +1,6 @@
 import { GET_ALL_USERS_URL, CREATE_USER_URL } from 'Constants/api';
 import callApi from 'Services/callApi';
 
-import { browser } from 'react-router-dom';
-
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
 export const GET_USERS_STARTED = 'GET_USERS_STARTED';

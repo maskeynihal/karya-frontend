@@ -9,8 +9,6 @@ var _api = require("Constants/api");
 
 var _callApi = _interopRequireDefault(require("Services/callApi"));
 
-var _reactRouterDom = require("react-router-dom");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';

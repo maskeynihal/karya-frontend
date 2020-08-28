@@ -1,8 +1,6 @@
 import { GET_ALL_PROJECTS_URL, CREATE_PROJECT_URL } from 'Constants/api';
 import callApi from 'Services/callApi';
 
-import { browser } from 'react-router-dom';
-
 export const GET_PROJECTS_SUCCESS = 'GET_PROJECTS_SUCCESS';
 export const GET_PROJECTS_FAILURE = 'GET_PROJECTS_FAILURE';
 export const GET_PROJECTS_STARTED = 'GET_PROJECTS_STARTED';

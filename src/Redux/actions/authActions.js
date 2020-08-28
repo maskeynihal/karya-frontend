@@ -1,5 +1,3 @@
-import axios from 'axios';
-// import setAuthToken from '../utils/setAuthToken';
 import jwtDecode from 'jwt-decode';
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, SET_AUTH_INITIAL } from './types'; // Register User
 import callApi from 'Services/callApi';
@@ -8,9 +6,8 @@ import { usersActions } from 'Redux/actions';
 
 export const loginUser = (userData) => async (dispatch) => {
   try {
-    const { response, error } = await callApi(LOGIN_URL, userData);
+    const { response } = await callApi(LOGIN_URL, userData);
 
-    console.log(response.data.token);
     localStorage.setItem('karyaToken', response.data.token);
     const user = await jwtDecode(response.data.token);
 

@@ -11,10 +11,6 @@ var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
 
 var _reducers = _interopRequireDefault(require("Redux/reducers"));
 
-var _appMiddleware = _interopRequireDefault(require("./middleware/appMiddleware"));
-
-var _apiMiddleware = _interopRequireDefault(require("./middleware/apiMiddleware"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk["default"])(_redux.createStore);

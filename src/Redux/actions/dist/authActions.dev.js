@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logoutUser = exports.setUserLoading = exports.setCurrentUser = exports.loginUser = void 0;
 
-var _axios = _interopRequireDefault(require("axios"));
-
 var _jwtDecode = _interopRequireDefault(require("jwt-decode"));
 
 var _types = require("./types");
@@ -19,11 +17,10 @@ var _actions = require("Redux/actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// import setAuthToken from '../utils/setAuthToken';
 // Register User
 var loginUser = function loginUser(userData) {
   return function _callee(dispatch) {
-    var _ref, response, error, user;
+    var _ref, response, user;
 
     return regeneratorRuntime.async(function _callee$(_context) {
       while (1) {
@@ -36,36 +33,34 @@ var loginUser = function loginUser(userData) {
           case 3:
             _ref = _context.sent;
             response = _ref.response;
-            error = _ref.error;
-            console.log(response.data.token);
             localStorage.setItem('karyaToken', response.data.token);
-            _context.next = 10;
+            _context.next = 8;
             return regeneratorRuntime.awrap((0, _jwtDecode["default"])(response.data.token));
 
-          case 10:
+          case 8:
             user = _context.sent;
             // Set current user
             dispatch(setCurrentUser({
               user: user,
               token: response.data.token
             }));
-            _context.next = 17;
+            _context.next = 15;
             break;
 
-          case 14:
-            _context.prev = 14;
+          case 12:
+            _context.prev = 12;
             _context.t0 = _context["catch"](0);
             dispatch({
               type: _types.GET_ERRORS,
               payload: _context.t0.response || {}
             });
 
-          case 17:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, null, null, [[0, 14]]);
+    }, null, null, [[0, 12]]);
   };
 }; // Set logged in user
 

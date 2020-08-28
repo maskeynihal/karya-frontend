@@ -17,9 +17,6 @@ function Dashboard() {
         <Link className="list-group-item" to={'/tasks'}>
           Task
         </Link>
-        <Link className="list-group-item">
-          <div className="btn btn-warning">LOGOUT</div>
-        </Link>
       </ul>
     </>
   );

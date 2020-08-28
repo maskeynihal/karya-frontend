@@ -2,8 +2,6 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Home from 'Views/pages/home';
-import RegisterPage from 'Views/pages/register';
 import LoginPage from 'Views/pages/login';
 import AuthRoute from 'Components/hoc/authRoute';
 import DefaultLayout from 'Views/layouts/default';

@@ -79,6 +79,12 @@ var _default = function _default() {
         })
       });
 
+    case _actions.usersActions.setUserInitialState:
+      console.log('INITIAL_STATE', INITIAL_STATE);
+      return {
+        INITIAL_STATE: INITIAL_STATE
+      };
+
     default:
       return state;
   }

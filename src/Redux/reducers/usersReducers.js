@@ -34,6 +34,10 @@ export default (state = INITIAL_STATE, action) => {
           return user;
         })
       };
+    case usersActions.setUserInitialState:
+      console.log('INITIAL_STATE', INITIAL_STATE);
+
+      return { INITIAL_STATE };
     default:
       return state;
   }

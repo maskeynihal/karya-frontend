@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { authActions } from 'Redux/actions';
 import { TopNavbar } from 'Components/container/navbar';
 
 /**
@@ -12,6 +14,9 @@ import { TopNavbar } from 'Components/container/navbar';
  * @param {Object} props
  */
 function DefaultLayout(props) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   return (
     <div>
       <Row>
@@ -31,6 +36,16 @@ function DefaultLayout(props) {
             <Link className="list-group-item" to={'/tasks'}>
               Task
             </Link>
+            <button
+              className="btn btn-warning"
+              onClick={() => {
+                dispatch(authActions.logoutUser());
+                history.push('/login');
+                // <Redirect to={{ pathname: '/projects' }}></Redirect>;
+              }}
+            >
+              LOGOUT
+            </button>
           </ul>
         </div>
         <div className="col-9">

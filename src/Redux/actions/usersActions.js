@@ -12,6 +12,7 @@ export const CREATE_USER = 'CREATE_USER';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const SHOW_USER_SUCCESS = 'SHOW_USER_SUCCESS';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const USERS_INITIAL_STATE = 'USERS_INITIAL_STATE';
 
 export const getAllUsers = (users) => async (dispatch) => {
   dispatch(getUserStarted());
@@ -99,3 +100,5 @@ const getUserFailure = (error) => ({
 });
 
 const getUserStarted = () => ({ type: GET_USERS_STARTED });
+
+export const setUserInitialState = () => ({ type: USERS_INITIAL_STATE });

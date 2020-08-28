@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.editUser = exports.showUser = exports.createUser = exports.getAllUsers = exports.EDIT_USER_SUCCESS = exports.SHOW_USER_SUCCESS = exports.CREATE_USER_SUCCESS = exports.CREATE_USER = exports.GET_ALL_USERS = exports.GET_USERS_STARTED = exports.GET_USERS_FAILURE = exports.GET_USERS_SUCCESS = void 0;
+exports.setUserInitialState = exports.editUser = exports.showUser = exports.createUser = exports.getAllUsers = exports.USERS_INITIAL_STATE = exports.EDIT_USER_SUCCESS = exports.SHOW_USER_SUCCESS = exports.CREATE_USER_SUCCESS = exports.CREATE_USER = exports.GET_ALL_USERS = exports.GET_USERS_STARTED = exports.GET_USERS_FAILURE = exports.GET_USERS_SUCCESS = void 0;
 
 var _api = require("Constants/api");
 
@@ -29,6 +29,8 @@ var SHOW_USER_SUCCESS = 'SHOW_USER_SUCCESS';
 exports.SHOW_USER_SUCCESS = SHOW_USER_SUCCESS;
 var EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 exports.EDIT_USER_SUCCESS = EDIT_USER_SUCCESS;
+var USERS_INITIAL_STATE = 'USERS_INITIAL_STATE';
+exports.USERS_INITIAL_STATE = USERS_INITIAL_STATE;
 
 var getAllUsers = function getAllUsers(users) {
   return function _callee(dispatch) {
@@ -222,3 +224,11 @@ var getUserStarted = function getUserStarted() {
     type: GET_USERS_STARTED
   };
 };
+
+var setUserInitialState = function setUserInitialState() {
+  return {
+    type: USERS_INITIAL_STATE
+  };
+};
+
+exports.setUserInitialState = setUserInitialState;

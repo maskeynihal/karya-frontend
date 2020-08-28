@@ -23,7 +23,7 @@ function Projects() {
           <div className="col-8">USERS</div>
           <div className="col-4 text-right">
             <Link to={'/projects/create'} className="btn btn-primary">
-              Create User
+              Create Project
             </Link>
           </div>
         </div>

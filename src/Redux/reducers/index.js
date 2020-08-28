@@ -6,6 +6,8 @@ import todosReducers from './todosReducer';
 import authReducers from './authReducer';
 import errorReducers from './errorReducer';
 import usersReducers from './usersReducers';
+import projectsReducers from './projectsReducers';
+
 export default combineReducers({
   modal: modalReducers,
   redirect: redirectReducer,
@@ -13,5 +15,6 @@ export default combineReducers({
   todos: todosReducers,
   auth: authReducers,
   errors: errorReducers,
-  users: usersReducers
+  users: usersReducers,
+  projects: projectsReducers
 });

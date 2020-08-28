@@ -21,3 +21,13 @@ export const CREATE_USER_URL = {
   url: '/users',
   method: 'POST'
 };
+
+export const GET_ALL_PROJECTS_URL = {
+  url: '/projects',
+  method: 'GET'
+};
+
+export const CREATE_PROJECT_URL = {
+  url: '/projects',
+  method: 'POST'
+};

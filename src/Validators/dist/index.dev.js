@@ -27,6 +27,12 @@ Object.defineProperty(exports, "createUserValidation", {
     return _createUserValidation["default"];
   }
 });
+Object.defineProperty(exports, "createProjectValidation", {
+  enumerable: true,
+  get: function get() {
+    return _createProjectValidation["default"];
+  }
+});
 
 var _registerFormValidation = _interopRequireDefault(require("./registerFormValidation"));
 
@@ -35,5 +41,7 @@ var _loginFormValidation = _interopRequireDefault(require("./loginFormValidation
 var _addTaskValidation = _interopRequireDefault(require("./addTaskValidation"));
 
 var _createUserValidation = _interopRequireDefault(require("./createUserValidation"));
+
+var _createProjectValidation = _interopRequireDefault(require("./createProjectValidation"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

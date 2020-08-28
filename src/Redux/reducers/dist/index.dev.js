@@ -21,6 +21,8 @@ var _errorReducer = _interopRequireDefault(require("./errorReducer"));
 
 var _usersReducers = _interopRequireDefault(require("./usersReducers"));
 
+var _projectsReducers = _interopRequireDefault(require("./projectsReducers"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default = (0, _redux.combineReducers)({
@@ -30,7 +32,8 @@ var _default = (0, _redux.combineReducers)({
   todos: _todosReducer["default"],
   auth: _authReducer["default"],
   errors: _errorReducer["default"],
-  users: _usersReducers["default"]
+  users: _usersReducers["default"],
+  projects: _projectsReducers["default"]
 });
 
 exports["default"] = _default;
